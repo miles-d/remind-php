@@ -40,6 +40,11 @@ td input.btn {
   height: 2em;
 }
 
+td a.to-material {
+  text-decoration: underline;
+  color: #244363;
+}
+
 #wrap {
   min-height: 100%;
   height: auto !important;
@@ -63,3 +68,4 @@ td input.btn {
 #about h4 {
   line-height: 145%;
 }
+

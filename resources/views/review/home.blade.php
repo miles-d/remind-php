@@ -23,7 +23,10 @@
 	  <tr>
 	  @endif
 		<td>
-		  <a href="{{ route('review.show', [$review->id]) }}">{{ $review->description }}</a>
+		  <a class="to-review" href="{{ route('review.show', [$review->id]) }}">{{ $review->description }}</a>
+          @if(!empty($review->link))
+          &nbsp;<a class="to-material" href="{{ $review->link }}">(link)</a>
+          @endif
 		</td>
 		<td>
 		  {{ App\Acme\ReviewHelper::readableDate($review->next_review_date) }}
