@@ -10,6 +10,28 @@
 		<p>{{ $review->description }}</p>
 	</div>
 
+	<h2 class="underline">Comment:</h2>
+	<div class="well">
+      <p>
+      @if( empty($review->comment) )
+        (No comment. Click 'Edit' below to add.)
+      @else
+        {{ $review->comment }}
+      @endif
+      </p>
+	</div>
+
+	<h2 class="underline">Link to material:</h2>
+	<div class="well">
+      <p>
+      @if( empty($review->link) )
+        (No link. Click 'Edit' below to add.)
+      @else
+        {{ $review->link }}
+      @endif
+      </p>
+	</div>
+
 	<h2 class="underline">Last Review:</h2>
 	<div class="well">
 	  @if($review->last_review_date)
