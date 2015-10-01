@@ -27,7 +27,7 @@
       @if( empty($review->link) )
         (No link. Click 'Edit' below to add.)
       @else
-        {{ $review->link }}
+      <a href="{{ $review->link }}">{{ $review->link }}</a>
       @endif
       </p>
 	</div>

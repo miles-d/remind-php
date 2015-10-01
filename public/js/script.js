@@ -7,16 +7,13 @@ $(document).ready(function() {
     $('.table > tbody > tr').css('cursor', 'pointer');
     $('.table > tbody > tr a.to-material').css('cursor', 'pointer');
 
-    // // Turn table rows to links;
+    // Turn table rows to links;
     $('.table > tbody > tr').click( function(event) {
-        event.stopPropagation;
         var a = $(this).children(':first-child').children(':first-child')
         window.location.href = a.attr('href');
-
     });
 
     $('.table > tbody > tr a').click( function() {
-        event.stopPropagation;
         window.location.href = $(this).attr('href');
     });
 });
