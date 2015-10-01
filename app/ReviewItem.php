@@ -11,7 +11,7 @@ class ReviewItem extends Model
 	protected $table = 'review_items';
 
 	protected $fillable = [
-		'user_id', 'description', 'last_review_date', 'next_review_date', 'level', 'mastered',
+		'user_id', 'description', 'comment', 'link', 'last_review_date', 'next_review_date', 'level', 'mastered',
 	];
 
     // Get all topics of an user

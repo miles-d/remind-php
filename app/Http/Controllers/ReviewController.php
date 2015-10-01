@@ -45,11 +45,14 @@ class ReviewController extends Controller
     {
 		$input['_token'] = $request->_token;
 		$input['description'] = $request->description;
+		$input['comment'] = $request->comment;
+		$input['link'] = $request->link;
 		$input['user_id'] = Auth::user()->id;
 		$today = new \DateTime('tomorrow');
 		$input['next_review_date'] = $today->format('Y-m-d');
 		
 		$review->create($input);
+
 		return redirect()->route('review.index')
 			->with('status', 'success')
 			->with('msg', 'New topic added!');
@@ -87,6 +90,8 @@ class ReviewController extends Controller
     public function update(Request $request, ReviewItem $review)
     {
 		$review->description = $request['description'];
+		$review->comment = $request['comment'];
+		$review->link = $request['link'];
 		$review->save();
 
 		return redirect()->route('review.index')
