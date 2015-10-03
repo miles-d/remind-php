@@ -36,4 +36,12 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * A user can have many ReviewItems
+     */
+    public function reviewItems()
+    {
+        return $this->hasMany('App\ReviewItem');
+    }
 }

@@ -12,7 +12,8 @@ use App\Http\Controllers\Controller;
 
 class ReviewController extends Controller
 {
-	public function __construct() {
+    public function __construct()
+    {
 		$this->middleware('auth');
 	}
 
@@ -24,7 +25,7 @@ class ReviewController extends Controller
     public function index()
     {
 		// get user's review items, sorted
-		$review_items = ReviewItem::getReviewItems(Auth::user());
+        $review_items = Auth::user()->reviewItems()->orderBy('next_review_date', 'asc')->get();
 
 		return view('review.home', compact('review_items'));
     }

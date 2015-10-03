@@ -11,17 +11,15 @@ class ReviewItem extends Model
 	protected $table = 'review_items';
 
 	protected $fillable = [
-		'user_id', 'description', 'comment', 'link', 'last_review_date', 'next_review_date', 'level', 'mastered',
+        'user_id',
+        'description',
+        'comment',
+        'link',
+        'last_review_date',
+        'next_review_date',
+        'level',
+        'mastered',
 	];
-
-    // Get all topics of an user
-	public static function getReviewItems(User $user)
-	{
-		$reviewItems = self::where('user_id', $user->id)
-			->orderBy('next_review_date', 'asc')->get();
-
-		return $reviewItems;
-	}
 
     /**
      * Mark topic as reviewed
