@@ -21,6 +21,14 @@ class ReviewItem extends Model
         'mastered',
 	];
 
+    public static $reviewSteps = ['1 day', '1 week', '1 month', '3 months', '6 months', '1 year'];
+
+    public function getNextReviewDate()
+    {
+        $date = new \DateTime(self::$reviewSteps[$this->level+1]);
+        return $date->format('Y-m-d');
+    }
+
     /**
      * Mark topic as reviewed
      *
@@ -29,9 +37,7 @@ class ReviewItem extends Model
 	public function review()
 	{
 		$this->level += 1;
-		$newLevel = $this->level;
-		$next_date = ReviewHelper::getNextReviewDate($newLevel);
-		$this->next_review_date = $next_date;
+        $this->next_review_date = $this->getNextReviewDate();
 		$today = new \DateTime;
 		$this->last_review_date = $today->format('Y-m-d');
 		$this->save();
@@ -45,7 +51,7 @@ class ReviewItem extends Model
 	public function reset()
 	{
 		$this->level = 0;
-		$next_date = ReviewHelper::getNextReviewDate(0);
+		$next_date = self::getNextReviewDate(0);
 		$this->next_review_date = $next_date;
 		$this->save();
 	}
