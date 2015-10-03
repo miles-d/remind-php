@@ -115,7 +115,7 @@ class ReviewController extends Controller
 
 		return redirect()->route('review.index')
 			->with('status', 'success')
-			->with('msg', 'Item deleted');
+			->with('msg', 'Topic deleted');
     }
 
 	/**
@@ -128,7 +128,7 @@ class ReviewController extends Controller
 
 		return redirect()->route('review.index')
 			->with('status', 'success')
-			->with('msg', 'Item reviewed - awesome!');
+			->with('msg', 'Topic reviewed - awesome!');
 	}
 
 	/**
