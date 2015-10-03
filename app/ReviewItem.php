@@ -25,7 +25,7 @@ class ReviewItem extends Model
 
     public function getNextReviewDate()
     {
-        $date = new \DateTime(self::$reviewSteps[$this->level+1]);
+        $date = new \DateTime(self::$reviewSteps[$this->level]);
         return $date->format('Y-m-d');
     }
 
@@ -36,11 +36,18 @@ class ReviewItem extends Model
      */
 	public function review()
 	{
-		$this->level += 1;
-        $this->next_review_date = $this->getNextReviewDate();
-		$today = new \DateTime;
-		$this->last_review_date = $today->format('Y-m-d');
-		$this->save();
+        $this->level += 1;
+
+        if ($this->level >= 6) {
+            $this->mastered = true;
+            $this->next_review_date = '';
+        } else {
+            $this->next_review_date = $this->getNextReviewDate();
+        }
+
+        $today = new \DateTime;
+        $this->last_review_date = $today->format('Y-m-d');
+        $this->save();
 	}
 
     /**
