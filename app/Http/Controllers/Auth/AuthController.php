@@ -23,6 +23,7 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
+    /* After successful login/register, redirect to the home page */
 	 protected $redirectPath = '/review';
 
     /**

@@ -17,6 +17,7 @@ class ReviewHelper
 
         $date = Carbon::createFromFormat('Y-m-d', $dateStr);
 
+        /* Customize some of the special dates */
         if ($date->isYesterday()) {
             $readable = "yesterday";
         } elseif ($date->isTomorrow()) {

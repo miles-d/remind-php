@@ -21,6 +21,11 @@ class ReviewItem extends Model
         'mastered',
 	];
 
+    /**
+     * Steps by which next reviews are scheduled.
+     * note: in future, it may be needed to support
+     * multiple schedule schemes.
+     */
     public static $reviewSteps = ['1 day', '1 week', '1 month', '3 months', '6 months', '1 year'];
 
     public function getNextReviewDate()
@@ -32,7 +37,7 @@ class ReviewItem extends Model
     /**
      * Mark topic as reviewed
      *
-     * Sets new level and schedules next review (unless topic is mastered)
+     * Sets new level and schedules next review (or marks topic mastered)
      */
 	public function review()
 	{

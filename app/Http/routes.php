@@ -14,8 +14,6 @@ Route::get('/', function() {
 });
 
 /* Review routes */
-Route::resource('review', 'ReviewController');
-
 Route::group(['prefix' => 'review/{review}'], function() {
     Route::patch('markReviewed', 
         ['as' => 'review.markReviewed', 'uses' => 'ReviewController@markReviewed']
@@ -27,6 +25,7 @@ Route::group(['prefix' => 'review/{review}'], function() {
         ['as' => 'review.reset', 'uses' => 'ReviewController@reset']
     );
 });
+Route::resource('review', 'ReviewController');
 
 /* Auth routes */
 Route::get('auth/login', ['as' => 'auth.showLogin', 'uses' => 'Auth\AuthController@getLogin']);

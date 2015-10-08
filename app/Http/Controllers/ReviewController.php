@@ -135,12 +135,18 @@ class ReviewController extends Controller
 	/**
 	 * Show confirmation for review deletion
 	 *
+     * @return Response
 	 */
 	public function delete(ReviewItem $review)
 	{
 		return view('review.delete', compact('review'));
 	}
 
+    /**
+     * Reset review progress
+     *
+     * @return Response
+     */
 	public function reset(ReviewItem $review)
 	{
 		$review->reset();
