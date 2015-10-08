@@ -17,12 +17,12 @@
       <div class="navbar-default" id="navbar-main">
         <ul class="navbar navbar-nav navbar-right">
   	      <ul class="nav navbar-nav navbar-right">
-  	      @if(Auth::user())
+            @if(Auth::user())
 	        <li><a href="{{ route('auth.logout') }}">Log Out {{ Auth::user()->email }}</a></li>
-		  @else
+            @else
             <li><a href="{{ route('auth.register') }}">Create Account</a></li>
             <li><a href="{{ route('auth.login') }}">Log In</a></li>
-  	      @endif
+            @endif
   	      </ul>
         </ul>
       </div>
