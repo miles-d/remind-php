@@ -1,3 +1,3 @@
 {!! Form::open(['method' => 'PATCH', 'route' => ['review.markReviewed', $review], 'class' => 'form-inline']) !!}
-  {!! Form::submit('Mark reviewed', ['class' => 'btn btn-xs btn-success']) !!}
+  <button type="submit" class="btn btn-xs btn-success"><span class="hidden-xs">Mark</span> reviewed</button>
 {!! Form::close() !!}
