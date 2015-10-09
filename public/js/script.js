@@ -13,7 +13,10 @@ $(document).ready(function() {
         window.location.href = a.attr('href');
     });
 
-    $('.table > tbody > tr a').click( function() {
-        window.location.href = $(this).attr('href');
+    $('a.to-material').click(function(event) {
+      event.stopPropagation();
+      event.preventDefault();
+      var url = $(this).attr('href');
+      window.open(url);
     });
 });

@@ -22,7 +22,7 @@
 		<td>
 		  <a class="to-review" href="{{ route('review.show', [$review->id]) }}">{{ $review->description }}</a>
           @if(!empty($review->link))
-          &nbsp;<a class="to-material" href="{{ $review->link }}"><small>(LINK)</small></a>
+          &nbsp;<small><a class="to-material" href="{{ $review->link }}" target="_blank">(LINK)</a></small>
           @endif
 		</td>
 		<td>
