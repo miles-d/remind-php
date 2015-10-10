@@ -48,11 +48,12 @@ class ReviewController extends Controller
      */
     public function store(Request $request, ReviewItem $review)
     {
-		$input['_token'] = $request->_token;
+		$input['_token']      = $request->_token;
 		$input['description'] = $request->description;
-		$input['comment'] = $request->comment;
-		$input['link'] = $request->link;
-		$input['user_id'] = Auth::user()->id;
+		$input['comment']     = $request->comment;
+		$input['link']        = $request->link;
+		$input['user_id']     = Auth::user()->id;
+
 		$today = new \DateTime('tomorrow');
 		$input['next_review_date'] = $today->format('Y-m-d');
 		
