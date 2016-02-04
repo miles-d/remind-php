@@ -11,7 +11,7 @@ a {
 }
 
 p, td, #description {
-  font-family: Georgia, Utopia, Charter, serif;
+  font-family: Lato, sans-serif;
 }
 
 input[type="text"], input[type="password"], input[type="email"] {
