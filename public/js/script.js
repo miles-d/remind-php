@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // animated flash message
-    $('#flash').hide().slideDown().delay(2000).slideUp();
+    $('#flash').hide().slideDown().delay(1000).slideUp();
 
     // Turn table rows to links -  more natural behavior for hover
     $('.table a.to-review').css('pointer-events', 'none');
