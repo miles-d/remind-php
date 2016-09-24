@@ -6,11 +6,11 @@ use Carbon\Carbon;
 
 class ReviewHelper
 {
-	/**
-	 * Convert ISO date string into readable relative date with Carbon
-	 */
-	public static function readableDate($dateStr)
-	{
+    /**
+     * Convert ISO date string into readable relative date with Carbon
+     */
+    public static function readableDate($dateStr)
+    {
         if (empty($dateStr)) {
             return 'Mastered';
         }
@@ -28,6 +28,6 @@ class ReviewHelper
             $readable = $date->diffForHumans();
         }
 
-		return $readable;
-	}
+        return $readable;
+    }
 }

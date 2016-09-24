@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -7,10 +6,9 @@ use App\Acme\ReviewHelper;
 
 class ReviewItem extends Model
 {
-    // Set custom table name
-	protected $table = 'review_items';
+    protected $table = 'review_items';
 
-	protected $fillable = [
+    protected $fillable = [
         'user_id',
         'description',
         'comment',
@@ -19,14 +17,21 @@ class ReviewItem extends Model
         'next_review_date',
         'level',
         'mastered',
-	];
+    ];
 
     /**
      * Steps by which next reviews are scheduled.
      * note: in future, it may be needed to support
      * multiple schedule schemes.
      */
-    public static $reviewSteps = ['1 day', '1 week', '1 month', '3 months', '6 months', '1 year'];
+    public static $reviewSteps = [
+        0 => '1 day',
+        1 => '1 week',
+        2 => '1 month',
+        3 => '3 months',
+        4 => '6 months',
+        5 => '1 year'
+    ]; 
 
     public function getNextReviewDate()
     {
@@ -36,11 +41,10 @@ class ReviewItem extends Model
 
     /**
      * Mark topic as reviewed
-     *
      * Sets new level and schedules next review (or marks topic mastered)
      */
-	public function review()
-	{
+    public function review()
+    {
         $this->level += 1;
 
         if ($this->level >= 6) {
@@ -53,30 +57,26 @@ class ReviewItem extends Model
         $today = new \DateTime;
         $this->last_review_date = $today->format('Y-m-d');
         $this->save();
-	}
+    }
 
     /**
      * Reset topic progress
-     *
      * Set level to 0, schedule next review for tomorrow
      */
-	public function reset()
-	{
-		$this->level = 0;
-		$next_date = self::getNextReviewDate(0);
-		$this->next_review_date = $next_date;
-		$this->save();
-	}
+    public function reset()
+    {
+        $this->level = 0;
+        $next_date = self::getNextReviewDate(0);
+        $this->next_review_date = $next_date;
+        $this->save();
+    }
 
     /**
      * Check if topic should be reviewed by now
-     *
      */
-	public function isDue()
-	{
-		$today = new \DateTime;
-
-		return ($this->next_review_date <= $today->format('Y-m-d'));
-	}
+    public function isDue()
+    {
+        $today = new \DateTime;
+        return ($this->next_review_date <= $today->format('Y-m-d'));
+    }
 }
-

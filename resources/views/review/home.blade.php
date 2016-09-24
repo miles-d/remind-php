@@ -30,8 +30,8 @@
 	    </td>
 	    <td>
           @if ($review->mastered == '0' && $review->isDue())
-			  @include('forms.reviewed-small')
-		  @endif
+	      @include('forms.reviewed-small')
+	  @endif
 		</td>
       </tr>
 	@endforeach
