@@ -19,11 +19,6 @@ class ReviewItem extends Model
         'mastered',
     ];
 
-    /**
-     * Steps by which next reviews are scheduled.
-     * note: in future, it may be needed to support
-     * multiple schedule schemes.
-     */
     public static $reviewSteps = [
         0 => '1 day',
         1 => '1 week',
