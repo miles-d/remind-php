@@ -14,7 +14,7 @@
       <div class="well">
         @include('forms.login')
         <h2 class="help-block text-right">First time here?</h2>
-        <a href="{!! route('auth.showRegister') !!}"><h2 class="text-right">Create an account!</h2></a>
+        <a href="{!! route('auth.register') !!}"><h2 class="text-right">Create an account!</h2></a>
       </div>
     </div>
   </div>

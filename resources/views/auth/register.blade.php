@@ -12,7 +12,7 @@
     </div>
     <div class="col-lg-4 col-lg-offset-1">
       <h2 class="help-block">Already have an account?</h2>
-      <a href="{!! route('auth.showLogin') !!}"><h2>Log In!</h2></a>
+      <a href="{!! route('auth.login') !!}"><h2>Log In!</h2></a>
     </div>
   </div>
 </div>
