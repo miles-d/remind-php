@@ -34,7 +34,7 @@
     <h2 class="underline">Last Review:</h2>
     <div class="well">
       @if($review->last_review_date)
-      <p>{{ App\Acme\ReviewHelper::readableDate($review->last_review_date) }} ({{ $review->last_review_date }})</p>
+      <p>{{ App\Review\ReviewHelper::readableDate($review->last_review_date) }} ({{ $review->last_review_date }})</p>
       @else
       <p>No review yet!</p>
       @endif
@@ -42,7 +42,7 @@
 
     <h2 class="underline">Next Review:</h2>
     <div class="well">
-      <p>{{ App\Acme\ReviewHelper::readableDate($review->next_review_date) }} ({{ $review->next_review_date }})</p>
+      <p>{{ App\Review\ReviewHelper::readableDate($review->next_review_date) }} ({{ $review->next_review_date }})</p>
     </div>
 
     <h2 class="underline">Level:</h2>
@@ -52,7 +52,7 @@
 
     <h2 class="underline">Creation date:</h2>
     <div class="well">
-      <p>{{ App\Acme\ReviewHelper::readableDate($review->created_at->format('Y-m-d')) }} ({{ $review->created_at->format('Y-m-d') }})</p>
+      <p>{{ App\Review\ReviewHelper::readableDate($review->created_at->format('Y-m-d')) }} ({{ $review->created_at->format('Y-m-d') }})</p>
     </div>
 
     @if ($review->mastered == '0' && $review->isDue())

@@ -1,6 +1,5 @@
 <?php
-
-namespace App\Acme;
+namespace App\Review;
 
 use Carbon\Carbon;
 

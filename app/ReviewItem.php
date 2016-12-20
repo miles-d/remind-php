@@ -2,7 +2,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Acme\ReviewHelper;
+use App\Review\ReviewHelper;
 
 class ReviewItem extends Model
 {

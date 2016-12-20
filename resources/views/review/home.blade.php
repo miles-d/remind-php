@@ -26,7 +26,7 @@
           @endif
 		</td>
 		<td>
-		  {{ App\Acme\ReviewHelper::readableDate($review->next_review_date) }}
+		  {{ App\Review\ReviewHelper::readableDate($review->next_review_date) }}
 	    </td>
 	    <td>
           @if ($review->mastered == '0' && $review->isDue())
