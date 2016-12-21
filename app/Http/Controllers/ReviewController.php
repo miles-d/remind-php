@@ -84,7 +84,7 @@ class ReviewController extends Controller
     public function markReviewed($id)
     {
         $review = ReviewItem::find($id);
-        $review->review();
+        $review->review()->save();
 
         return redirect()->route('review.index')
             ->with('status', 'success')

@@ -48,7 +48,7 @@ class ReviewItem extends Model
 
         $today = new \DateTime;
         $this->last_review_date = $today->format('Y-m-d');
-        $this->save();
+        return $this;
     }
 
     public function reset()
