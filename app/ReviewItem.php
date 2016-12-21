@@ -7,6 +7,7 @@ use App\Review\ReviewHelper;
 class ReviewItem extends Model
 {
     protected $table = 'review_items';
+    protected $guarded = [];
 
     protected $fillable = [
         'user_id',

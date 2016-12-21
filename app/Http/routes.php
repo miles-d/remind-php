@@ -1,20 +1,11 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-*/
-
-/* Route model binding */
-Route::model('review', 'App\ReviewItem');
-
 Route::get('/', function() {
-	return redirect('/review');
+    return redirect('/review');
 });
 
 /* Review routes */
-Route::group(['prefix' => 'review/{review}'], function() {
+Route::group(['prefix' => 'review/{id}'], function() {
     Route::patch('markReviewed', 
         ['as' => 'review.markReviewed', 'uses' => 'ReviewController@markReviewed']
     );
@@ -25,7 +16,14 @@ Route::group(['prefix' => 'review/{review}'], function() {
         ['as' => 'review.reset', 'uses' => 'ReviewController@reset']
     );
 });
-Route::resource('review', 'ReviewController');
+
+Route::get('review/create', ['as' => 'review.create', 'uses' => 'ReviewController@create']);
+Route::get('review', ['as' => 'review.index', 'uses' => 'ReviewController@index']);
+Route::post('review', ['as' => 'review.store', 'uses' => 'ReviewController@store']);
+Route::get('review/{id}', ['as' => 'review.show', 'uses' => 'ReviewController@show']);
+Route::get('review/{id}/edit', ['as' => 'review.edit', 'uses' => 'ReviewController@edit']);
+Route::patch('review/{id}', ['as' => 'review.update', 'uses' => 'ReviewController@update']);
+Route::delete('review/{id}', ['as' => 'review.destroy', 'uses' => 'ReviewController@destroy']);
 
 /* Auth routes */
 Route::get('auth/login', ['as' => 'auth.login', 'uses' => 'Auth\LoginController@showLoginForm']);
