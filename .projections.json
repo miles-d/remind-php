@@ -1,0 +1,46 @@
+{
+    "app/*.php": {
+        "alternate": "tests/unit/{}Test.php",
+        "type": "source",
+        "template": ["<?php", "namespace ;\n", "class {basename}", "{open}\n{close}"],
+        "dispatch": "phpunit --testsuite unit"
+    },
+    "tests/unit/*Test.php": {
+        "alternate": "app/{}.php",
+        "type": "test",
+        "template": [
+            "<?php",
+            "namespace Test\\Unit\\{backslash};",
+            "",
+            "use PHPUnit\\Framework\\TestCase;",
+            "use App\\{backslash};",
+            "",
+            "class {basename}Test extends TestCase",
+            "{open}",
+            "{close}"
+        ],
+        "dispatch": "phpunit --testsuite unit"
+    },
+    "tests/integration/*Test.php": {
+        "alternate": "app/{}.php",
+        "type": "test",
+        "template": [
+            "<?php",
+            "namespace Test\\Integration\\{backslash};",
+            "",
+            "use TestCase;",
+            "use Illuminate\Foundation\\Testing\\WithoutMiddleware;",
+            "use Illuminate\\Foundation\\Testing\\DatabaseMigrations;",
+            "use Illuminate\\Foundation\\Testing\\DatabaseTransactions;",
+            "use App\\{backslash};",
+            "",
+            "class {basename}Test extends TestCase",
+            "{open}",
+            "{close}"
+        ],
+        "dispatch": "phpunit --testsuite integration"
+    },
+    "*.php": {
+        "console": "php artisan tinker"
+    }
+}
