@@ -67,6 +67,8 @@ class ReviewItem extends Model
 
     public function isDue()
     {
+        if ($this->level >= self::lastLevel())
+            return false;
         $today = new \DateTime;
         return ($this->next_review_date <= $today->format('Y-m-d'));
     }

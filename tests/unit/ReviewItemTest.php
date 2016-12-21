@@ -23,4 +23,13 @@ class ReviewItemTest extends TestCase
         $item->review();
         $this->assertEquals(ReviewItem::lastLevel(), $item->level);
     }
+
+    public function testIsNotDueIfMastered()
+    {
+        $item = new ReviewItem;
+        $item->level = ReviewItem::lastLevel();
+        $yesterday = (new \DateTime)->sub(new \DateInterval("P1D"))->format('Y-m-d');
+        $item->next_review_date = $yesterday;
+        $this->assertFalse($item->isDue());
+    }
 }

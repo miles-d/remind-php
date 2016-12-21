@@ -1,10 +1,12 @@
 <?php
+namespace Test\Integration\ReviewItem;
 
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\ReviewItem;
 use App\User;
+use TestCase;
 
 class ReviewItemTest extends TestCase
 {
