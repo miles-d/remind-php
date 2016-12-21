@@ -29,6 +29,11 @@ class ReviewItem extends Model
         5 => '1 year'
     ]; 
 
+    public static function lastLevel()
+    {
+        return count(self::$reviewSteps) + 1;
+    }
+
     public function getNextReviewDate()
     {
         $date = new \DateTime(self::$reviewSteps[$this->level]);
@@ -37,9 +42,10 @@ class ReviewItem extends Model
 
     public function review()
     {
-        $this->level += 1;
+        if ($this->level < self::lastLevel())
+            $this->level += 1;
 
-        if ($this->level >= 6) {
+        if ($this->level >= self::lastLevel()) {
             $this->mastered = true;
             $this->next_review_date = '';
         } else {
