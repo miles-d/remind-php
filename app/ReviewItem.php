@@ -35,10 +35,6 @@ class ReviewItem extends Model
         return $date->format('Y-m-d');
     }
 
-    /**
-     * Mark topic as reviewed
-     * Sets new level and schedules next review (or marks topic mastered)
-     */
     public function review()
     {
         $this->level += 1;
@@ -55,10 +51,6 @@ class ReviewItem extends Model
         $this->save();
     }
 
-    /**
-     * Reset topic progress
-     * Set level to 0, schedule next review for tomorrow
-     */
     public function reset()
     {
         $this->level = 0;
@@ -67,9 +59,6 @@ class ReviewItem extends Model
         $this->save();
     }
 
-    /**
-     * Check if topic should be reviewed by now
-     */
     public function isDue()
     {
         $today = new \DateTime;
