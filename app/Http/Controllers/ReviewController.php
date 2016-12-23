@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -19,8 +18,7 @@ class ReviewController extends Controller
 
     public function index()
     {
-        $review_items = Auth::user()->reviewItems()->orderBy('next_review_date', 'asc')->get();
-        return view('review.home', compact('review_items'));
+        return view('review.home');
     }
 
     public function create()
@@ -79,16 +77,6 @@ class ReviewController extends Controller
         return redirect()->route('review.index')
             ->with('status', 'success')
             ->with('msg', 'Topic deleted');
-    }
-
-    public function markReviewed($id)
-    {
-        $review = ReviewItem::find($id);
-        $review->review()->save();
-
-        return redirect()->route('review.index')
-            ->with('status', 'success')
-            ->with('msg', 'Topic reviewed - awesome!');
     }
 
     public function delete($id)

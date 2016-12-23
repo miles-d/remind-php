@@ -6,8 +6,8 @@ Route::get('/', function() {
 
 /* Review routes */
 Route::group(['prefix' => 'review/{id}'], function() {
-    Route::patch('markReviewed', 
-        ['as' => 'review.markReviewed', 'uses' => 'ReviewController@markReviewed']
+    Route::post('mark-reviewed', 
+        ['as' => 'review.markReviewed', 'uses' => 'ReviewDataController@markReviewed']
     );
     Route::get('delete', 
         ['as' => 'review.delete', 'uses' => 'ReviewController@delete']
@@ -19,6 +19,7 @@ Route::group(['prefix' => 'review/{id}'], function() {
 
 Route::get('review/create', ['as' => 'review.create', 'uses' => 'ReviewController@create']);
 Route::get('review', ['as' => 'review.index', 'uses' => 'ReviewController@index']);
+Route::get('api/review', ['as' => 'api.index', 'uses' => 'ReviewDataController@index']);
 Route::post('review', ['as' => 'review.store', 'uses' => 'ReviewController@store']);
 Route::get('review/{id}', ['as' => 'review.show', 'uses' => 'ReviewController@show']);
 Route::get('review/{id}/edit', ['as' => 'review.edit', 'uses' => 'ReviewController@edit']);
