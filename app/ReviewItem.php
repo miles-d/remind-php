@@ -31,7 +31,7 @@ class ReviewItem extends Model
 
     public static function lastLevel()
     {
-        return count(self::$reviewSteps) + 1;
+        return count(self::$reviewSteps);
     }
 
     public function getNextReviewDate()

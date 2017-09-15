@@ -32,4 +32,13 @@ class ReviewItemTest extends TestCase
         $item->next_review_date = $yesterday;
         $this->assertFalse($item->isDue());
     }
+
+    public function testLevelLimit()
+    {
+        $item = new ReviewItem;
+        $this->assertNull($item->mastered);
+        $item->level = 5;
+        $item->review();
+        $this->assertTrue($item->mastered);
+    }
 }
