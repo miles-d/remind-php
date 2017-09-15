@@ -21,6 +21,8 @@ APP.populateTable = function (response) {
         if (item.is_due) {
             rowClass = 'success';
             reviewButton = '<button type="button" class="mark-reviewed-btn btn btn-xs btn-success"><span class="hidden-xs">Mark</span> reviewed</button>';
+        } else if (item.mastered === "1") {
+            rowClass = 'info';
         }
 
         row = '<tr data-id="' + item.id + '" class="' + rowClass + '">' +
