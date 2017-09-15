@@ -10,7 +10,10 @@ class ReviewDataController extends Controller
 {
     public function index()
     {
-        $reviewItems = Auth::user()->reviewItems()->orderBy('next_review_date', 'asc')->get();
+        $reviewItems = Auth::user()->reviewItems()
+            ->orderBy('mastered', 'asc')
+            ->orderBy('next_review_date', 'asc')
+            ->get();
         $reviewItems = $reviewItems->map(function ($item) {
             $item->is_due = $item->isDue();
             $item->next_review_date = ReviewHelper::readableDate($item->next_review_date);
