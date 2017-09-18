@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -e
+
+ssh -p 59184 milesd@miloszdragan.pl "cd remind && git pull gitlab master && exit"
