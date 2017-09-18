@@ -11,7 +11,7 @@ class ReviewHelper
     public static function readableDate($dateStr)
     {
         if (empty($dateStr)) {
-            return 'Mastered';
+            return 'Never';
         }
 
         $date = Carbon::createFromFormat('Y-m-d', $dateStr);
