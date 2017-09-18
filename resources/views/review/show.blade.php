@@ -42,7 +42,12 @@
 
     <h2 class="underline">Next Review:</h2>
     <div class="well">
-      <p>{{ App\Review\ReviewHelper::readableDate($review->next_review_date) }} ({{ $review->next_review_date }})</p>
+      <p>
+        {{ App\Review\ReviewHelper::readableDate($review->next_review_date) }}
+        @if ($review->next_review_date)
+          ({{ $review->next_review_date }})
+        @endif
+      </p>
     </div>
 
     <h2 class="underline">Level:</h2>
