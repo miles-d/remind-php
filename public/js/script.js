@@ -25,7 +25,12 @@ APP.populateTable = function (response) {
             rowClass = 'info';
         }
 
-        row = '<tr data-id="' + item.id + '" class="' + rowClass + '">' +
+        var rowTitleAttribute = '';
+        if (item.comment) {
+            rowTitleAttribute = ' title="' + item.comment + '"';
+        }
+
+        row = '<tr data-id="' + item.id + '" class="' + rowClass + '" ' + rowTitleAttribute + '>' +
             '<td class="edit-item">' + item.description + link + '</a></td>' +
             '<td class="edit-item">' + item.next_review_date + '</td>' +
             '<td>' + reviewButton + '</td>' +
