@@ -21,9 +21,13 @@ class User extends Model implements AuthenticatableContract,
     protected $fillable = [
         'name',
         'email',
-        'password'];
+        'password'
+    ];
 
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = [
+        'password',
+        'remember_token'
+    ];
 
     public function reviewItems()
     {
