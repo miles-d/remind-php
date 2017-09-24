@@ -36,7 +36,7 @@
 </div>
   <div class="footer">
   	<p class="text-center">
-  		2015-2016 Miles Dragan | <a href="mailto:miloszdragan@openmailbox.org">miloszdragan@openmailbox.org</a>
+          © <a href="mailto:milosz.danczak@gmail.com">Milosz Danczak</a>
   	</p>
   </div>
   <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script> 
