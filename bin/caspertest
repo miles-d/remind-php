@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+
+
+function delete_test_user() {
+	echo "Deleting the test user..."
+	sqlite3 storage/database.sqlite "DELETE FROM users WHERE email='johndoe_test@example.com'"
+	echo "Test user dropped."
+}
+
+function delete_test_review_items() {
+	echo "Deleting the test review items..."
+	sqlite3 storage/database.sqlite "DELETE FROM review_items WHERE description='Test Topic' OR description='Edited Topic'"
+	echo "Test review items dropped."
+}
+
+function insert_due_review_item() {
+	sqlite3 storage/database.sqlite "INSERT INTO review_items(user_id,last_review_date,next_review_date,description,created_at,updated_at) VALUES((SELECT id FROM users WHERE email='johndoe_test@example.com'),date('now'),date('now'),'Test Topic',date('now'),date('now'))";
+}
+
+function run_tests() {
+	delete_test_review_items
+	delete_test_user
+
+	node_modules/.bin/casperjs test tests/system/{auth.js,crud.js}
+	delete_test_review_items
+
+	insert_due_review_item
+	node_modules/.bin/casperjs test tests/system/review_from_main_page.js
+	delete_test_review_items
+
+	insert_due_review_item
+	node_modules/.bin/casperjs test tests/system/review_from_item_page.js
+	delete_test_review_items
+
+	delete_test_user
+}
+
+run_tests

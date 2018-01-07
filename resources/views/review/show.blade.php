@@ -1,4 +1,9 @@
 @extends('master')
+
+@section('title')
+Topic Summary
+@endsection
+
 @section('content')
 <div class="page-header">
   <h1>Topic Summary</h1>
@@ -64,10 +69,10 @@
         @include('forms.reviewed')
     @endif
 
-    <a class="btn btn-default btn-block" href="{{ route('review.edit', [$review]) }}">Edit</a>
+    <a id="edit-review-button" class="btn btn-default btn-block" href="{{ route('review.edit', [$review]) }}">Edit</a>
 
     @include('forms.reset')
 
-    <a class="btn btn-danger btn-block" href="{{ route('review.delete', [$review]) }}">Delete</a>
-    <a class="btn btn-default btn-block" href="{{ route('review.index') }}">Back</a>
+    <a id="delete-review-button" class="btn btn-danger btn-block" href="{{ route('review.delete', [$review]) }}">Delete</a>
+    <a id="back-button" class="btn btn-default btn-block" href="{{ route('review.index') }}">Back</a>
 @stop

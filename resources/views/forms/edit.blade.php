@@ -1,4 +1,4 @@
-{!! Form::open(['method' => 'PATCH', 'route' => ['review.update', $review->id]]) !!}
+{!! Form::open(['method' => 'PATCH', 'route' => ['review.update', $review->id], 'id' => 'edit-review-form']) !!}
 <div class="form-group">
   {!! Form::label('description', 'Description:', ['class' => 'control-label']) !!}
   {!! Form::text('description', $review->description, ['required', 'autofocus', 'class' => 'form-control']) !!}

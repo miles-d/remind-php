@@ -1,4 +1,4 @@
-{!! Form::open(['route' => ['auth.login'], 'method' => 'POST', 'class' => 'form-horizontal']) !!}
+{!! Form::open(['route' => ['auth.login'], 'method' => 'POST', 'class' => 'form-horizontal', 'id' => 'login-form']) !!}
 <fieldset>
   <div class="form-group">
     <label for="email" class="col-lg-2 control-label">E-mail</label>

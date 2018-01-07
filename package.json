@@ -1,6 +1,7 @@
 {
   "private": true,
   "devDependencies": {
+    "casperjs": "^1.1.4",
     "gulp": "^3.8.8"
   },
   "dependencies": {

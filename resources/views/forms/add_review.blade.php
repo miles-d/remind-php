@@ -1,4 +1,4 @@
-{!! Form::open(['route' => ['review.store'], 'method' => 'POST']) !!}
+{!! Form::open(['route' => ['review.store'], 'method' => 'POST', 'id' => 'create-topic-form']) !!}
 <div class="form-group">
   {!! Form::label('description', 'Description: ') !!}
   {!! Form::text('description', null, ['required', 'autofocus', 'class' => 'form-control']) !!}

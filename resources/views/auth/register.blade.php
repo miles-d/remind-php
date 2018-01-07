@@ -1,4 +1,9 @@
 @extends('master')
+
+@section('title')
+Register
+@endsection
+
 @section('content')
 <div class="page-header">
   <h1>Create Account</h1>

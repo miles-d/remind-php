@@ -1,4 +1,4 @@
-{!! Form::open(['route' => ['auth.register'], 'method' => 'POST', 'class' => 'form-horizontal']) !!}
+{!! Form::open(['route' => ['auth.register'], 'method' => 'POST', 'class' => 'form-horizontal', 'id' => 'register-form']) !!}
 <fieldset>
   <div class="form-group">
     <label for="name" class="col-lg-2 control-label">Name</label>
@@ -26,7 +26,7 @@
   </div>
   <div class="form-group">
     <div class="col-lg-10 col-lg-offset-2">
-      <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+      <button id="register-submit" type="submit" class="btn btn-primary btn-block">Create Account</button>
     </div>
   </div>
 </fieldset>

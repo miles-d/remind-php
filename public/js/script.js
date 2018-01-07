@@ -74,9 +74,26 @@ APP.initReviewTable = function () {
     });
 };
 
+// mark as reviewed from "show" page
+APP.reviewFromItemPage = function () {
+    var $btn = $('#mark-reviewed-btn');
+    $btn.on('click', function (e) {
+        e.preventDefault();
+        var id = $('#review_item_id').val();
+        if (id) {
+            $.post('/review/' + id + '/mark-reviewed').done(function () {
+                window.location.reload();
+            });
+        }
+    })
+};
+
 APP.init = function () {
     if ($("#review-table").length) {
         APP.initReviewTable();
+    }
+    if ($("#mark-reviewed-btn").length) {
+        APP.reviewFromItemPage();
     }
 };
 

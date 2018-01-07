@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Remind</title>
+@section('title')
+Spaced Repetition System
+@endsection
+    <title>Remind | @yield('title')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/sandstone/bootstrap.min.css"> 
@@ -18,7 +21,7 @@
         <ul class="navbar navbar-nav navbar-right">
   	      <ul class="nav navbar-nav navbar-right">
             @if(Auth::user())
-	        <li><a href="{{ route('auth.logout') }}">Log Out {{ Auth::user()->email }}</a></li>
+	        <li><a id="logout-button" href="{{ route('auth.logout') }}">Log Out {{ Auth::user()->email }}</a></li>
             @else
             <li><a href="{{ route('auth.register') }}">Create Account</a></li>
             <li><a href="{{ route('auth.login') }}">Log In</a></li>
