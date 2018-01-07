@@ -18,6 +18,8 @@ APP.populateTable = function (response) {
             link = ' <a class="to-material" href="' + item.link + '" target="_blank">(LINK)';
         }
 
+        item.description = item.description.replace(/\(vimwiki\)/i, '<small class="vimwiki-tag">(VIMWIKI)</small>');
+
         if (item.schedule_type === 'monthly') {
             item.description += ' <small class="monthly-tag">(MONTHLY)</small>';
         }
