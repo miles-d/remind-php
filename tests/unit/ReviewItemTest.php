@@ -76,4 +76,13 @@ class ReviewItemTest extends TestCase
         $this->assertSame($nextMonth, $item->getNextReviewDate());
         $this->assertSame(2, $item->level);
     }
+
+    public function testMonthlyIsNeverMastered()
+    {
+        $item = new ReviewItem;
+        $item->setMonthlySchedule();
+        $item->level = 10;
+        $item->review();
+        $this->assertFalse($item->mastered);
+    }
 }

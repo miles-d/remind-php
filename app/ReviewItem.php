@@ -38,6 +38,9 @@ class ReviewItem extends Model
 
     public function lastLevel()
     {
+        if ($this->isMonthly()) {
+            return $this->level + 100;
+        }
         return count($this->reviewSteps());
     }
 
@@ -53,6 +56,10 @@ class ReviewItem extends Model
 
     public function review()
     {
+        if ($this->isMonthly()) {
+            $this->mastered = false;
+        }
+
         if ($this->level < $this->lastLevel())
             $this->level += 1;
 
