@@ -33,6 +33,7 @@ class ReviewController extends Controller
         $input['comment']     = $request->comment;
         $input['link']        = $request->link;
         $input['user_id']     = Auth::user()->id;
+        $input['schedule_type'] = $request['schedule_type'];
 
         $today = new \DateTime('tomorrow');
         $input['next_review_date'] = $today->format('Y-m-d');
