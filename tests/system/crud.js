@@ -44,7 +44,8 @@ casper.test.begin('CRUD of edit item', function suite(test) {
   casper.then(function() {
     test.assertExists('input[type=submit]')
     this.fill('#edit-review-form', {
-      description: 'Edited Topic'
+      description: 'Edited Topic',
+      schedule_type: 'monthly'
     }, true);
     this.waitWhileSelector('#edit-review-form', function () {
       test.assertExists('td.edit-item')
@@ -54,6 +55,7 @@ casper.test.begin('CRUD of edit item', function suite(test) {
   casper.then(function() {
     test.assertExists('td.edit-item')
     test.assertSelectorHasText('td.edit-item', 'Edited Topic')
+    test.assertSelectorHasText('td.edit-item', '(MONTHLY)')
     test.assertSelectorDoesntHaveText('td.edit-item', 'Test Topic')
   })
 
