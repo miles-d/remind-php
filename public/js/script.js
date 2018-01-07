@@ -18,6 +18,10 @@ APP.populateTable = function (response) {
             link = ' <a class="to-material" href="' + item.link + '" target="_blank">(LINK)';
         }
 
+        if (item.schedule_type === 'monthly') {
+            item.description += ' <small class="monthly-tag">(MONTHLY)</small>';
+        }
+
         if (item.is_due) {
             rowClass = 'success';
             reviewButton = '<button type="button" class="mark-reviewed-btn btn btn-xs btn-success"><span class="hidden-xs">Mark</span> reviewed</button>';

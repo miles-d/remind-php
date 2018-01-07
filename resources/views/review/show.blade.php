@@ -65,6 +65,11 @@ Topic Summary
       <p>{{ App\Review\ReviewHelper::readableDate($review->created_at->format('Y-m-d')) }} ({{ $review->created_at->format('Y-m-d') }})</p>
     </div>
 
+    <h2 class="underline">Schedule Type:</h2>
+    <div class="well">
+<p>{{ ucfirst($review->scheduleType()) }}</p>
+    </div>
+
     @if ($review->mastered == '0' && $review->isDue())
         @include('forms.reviewed')
     @endif

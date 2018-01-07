@@ -62,6 +62,7 @@ class ReviewController extends Controller
         $review->description = $request['description'];
         $review->comment = $request['comment'];
         $review->link = $request['link'];
+        $review->schedule_type = $request['schedule_type'];
         $review->save();
 
         return redirect()->route('review.index')

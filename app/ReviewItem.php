@@ -3,11 +3,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Review\ReviewHelper;
+use DateTime;
 
 class ReviewItem extends Model
 {
     protected $table = 'review_items';
     protected $guarded = [];
+    const MONTHLY = 'monthly';
+    const STANDARD = 'standard';
 
     protected $fillable = [
         'user_id',
@@ -18,41 +21,49 @@ class ReviewItem extends Model
         'next_review_date',
         'level',
         'mastered',
+        'schedule_type',
     ];
 
-    public static $reviewSteps = [
-        0 => '1 day',
-        1 => '1 week',
-        2 => '1 month',
-        3 => '3 months',
-        4 => '6 months',
-        5 => '1 year'
-    ]; 
-
-    public static function lastLevel()
+    private function reviewSteps()
     {
-        return count(self::$reviewSteps);
+        return [
+            0 => '1 day',
+            1 => '1 week',
+            2 => '1 month',
+            3 => '3 months',
+            4 => '6 months',
+            5 => '1 year'
+        ];
+    }
+
+    public function lastLevel()
+    {
+        return count($this->reviewSteps());
     }
 
     public function getNextReviewDate()
     {
-        $date = new \DateTime(self::$reviewSteps[$this->level]);
+        if ($this->isMonthly()) {
+            $date = new DateTime('1 month');
+        } else {
+            $date = new DateTime($this->reviewSteps()[$this->level]);
+        }
         return $date->format('Y-m-d');
     }
 
     public function review()
     {
-        if ($this->level < self::lastLevel())
+        if ($this->level < $this->lastLevel())
             $this->level += 1;
 
-        if ($this->level >= self::lastLevel()) {
+        if ($this->level >= $this->lastLevel()) {
             $this->mastered = true;
             $this->next_review_date = '';
         } else {
             $this->next_review_date = $this->getNextReviewDate();
         }
 
-        $today = new \DateTime;
+        $today = new DateTime;
         $this->last_review_date = $today->format('Y-m-d');
         return $this;
     }
@@ -60,16 +71,31 @@ class ReviewItem extends Model
     public function reset()
     {
         $this->level = 0;
-        $next_date = self::getNextReviewDate(0);
+        $next_date = $this->getNextReviewDate();
         $this->next_review_date = $next_date;
         $this->save();
     }
 
     public function isDue()
     {
-        if ($this->level >= self::lastLevel())
+        if ($this->level >= $this->lastLevel())
             return false;
-        $today = new \DateTime;
+        $today = new DateTime;
         return ($this->next_review_date <= $today->format('Y-m-d'));
+    }
+
+    public function setMonthlySchedule()
+    {
+        $this->schedule_type = self::MONTHLY;
+    }
+
+    private function isMonthly()
+    {
+        return $this->schedule_type == self::MONTHLY;
+    }
+
+    public function scheduleType()
+    {
+        return $this->schedule_type ?? self::STANDARD;
     }
 }

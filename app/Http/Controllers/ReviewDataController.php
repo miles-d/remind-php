@@ -16,6 +16,7 @@ class ReviewDataController extends Controller
             ->get();
         $reviewItems = $reviewItems->map(function ($item) {
             $item->is_due = $item->isDue();
+            $item->schedule_type = $item->scheduleType();
             $item->next_review_date = ReviewHelper::readableDate($item->next_review_date);
             return $item;
         });
