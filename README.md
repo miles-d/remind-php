@@ -1,5 +1,7 @@
 # REMIND
 
+NOTE: this project is currently developed outside of github.  Considered it archived.
+
 This is the source code of [remind.miloszdragan.pl](http://remind.miloszdragan.pl)
 
 Remind is a PHP web-app that aids learning. It is a tool to schedule reviews of
